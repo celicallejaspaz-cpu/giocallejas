@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrusel de comida asiatica</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.carrusel {
+    position: relative;
+    width: 600px;
+    max-width: 90%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.imagenes {
+    display: flex;
+    transition: transform 1.5s ease-in-out;
+}
+
+.imagenes img {
+    width: 100%;
+    border-radius: 20px;
+    
+}
+.dumplings{
+    width: 100%;
+    border-radius: 20px;
+    
+}
+.imagenes img {
+    width: 100%;
+    border-radius: 20px;
+    
+}
+
+.boton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.boton:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.anterior {
+    left: 20px;
+}
+
+.siguiente {
+    right: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="carrusel">
+    <div class="imagenes">
+        <img src="C:\Users\CAN02\Documents\gio callejas 10b\comida asiatica\c2ZTMeI.jpg" alt="sushi">
+        <img src="C:\Users\CAN02\Documents\gio callejas 10b\comida asiatica\descarga.jpeg" alt="Pad Thai al Pho">
+        <img src="C:\Users\CAN02\Documents\gio callejas 10b\comida asiatica\images.jpeg" alt="dumplings">
+        <img src="C:\Users\CAN02\Documents\gio callejas 10b\comida asiatica\1741121890_web-500-x-1000-cocina-asiatica.jpg" alt="dumplings">
+        <img src="C:\Users\CAN02\Documents\gio callejas 10b\comida asiatica\descarga.jpeg" alt="Pad Thai al Pho"> alt="Pad Thai al Pho">
+    </div>
+
+    <button class="boton anterior">⬅</button>
+    <button class="boton siguiente">➡</button>
+</div>
+
+<script>
+const imagenes = document.querySelector('.imagenes');
+const totalImagenes = document.querySelectorAll('.imagenes img').length;
+const btnAnterior = document.querySelector('.anterior');
+const btnSiguiente = document.querySelector('.siguiente');
+
+let index = 0;
+
+function mostrarImagen() {
+    imagenes.style.transform = `translateX(${-index * 100}%)`;
+}
+
+btnSiguiente.addEventListener('click', () => {
+    index = (index + 1) % totalImagenes;
+    mostrarImagen();
+});
+
+btnAnterior.addEventListener('click', () => {
+    index = (index - 1 + totalImagenes) % totalImagenes;
+    mostrarImagen();
+});
+
+// Cambio automático cada 3 segundos
+setInterval(() => {
+    index = (index + 1) % totalImagenes;
+    mostrarImagen();
+}, 3000);
+</script>
+
+</body>
+</html>
